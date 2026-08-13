@@ -16,8 +16,8 @@ Website: https://rpf.indianrailways.gov.in/RPF/
 - Total requests: 82
 - Total transferred: 13.1 MB
 - Total resources: 14.3 MB
-- Slowest resource: 22.73 s
-- Slowest resource duration: 0 ms
+- Slowest resource: Gallery3.jpg
+- Slowest resource duration: 22.73 s
 
 ## 400 Responses
 
