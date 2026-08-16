@@ -1,0 +1,66 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="V6PYIhquQ3AqnEPUJJt4">
+    <mxGraphModel dx="858" dy="507" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="D49WajGZgcs7vXrkGEXH-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=center;" value="USERS&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;PK user_id : INT&amp;nbsp;&lt;/div&gt;&lt;div&gt;name : VARCHAR(100)&lt;/div&gt;&lt;div&gt;email : VARCHAR(150)&lt;/div&gt;&lt;div&gt;role : VARCHAR(20)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="210" x="140" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="D49WajGZgcs7vXrkGEXH-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="VENDORS&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;PK vendor_id : INT&lt;/div&gt;&lt;div&gt;name : VARCHAR(100)&lt;/div&gt;&lt;div&gt;status : VARCHAR(20)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="190" x="80" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="D49WajGZgcs7vXrkGEXH-17" edge="1" parent="1" source="D49WajGZgcs7vXrkGEXH-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="D49WajGZgcs7vXrkGEXH-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D49WajGZgcs7vXrkGEXH-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="CATEGORIES&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;PK category_id : INT&lt;/div&gt;&lt;div&gt;name : VARCHAR(100)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="190" x="380" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="D49WajGZgcs7vXrkGEXH-18" edge="1" parent="1" source="D49WajGZgcs7vXrkGEXH-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="D49WajGZgcs7vXrkGEXH-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="385" y="400" />
+              <mxPoint x="615" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D49WajGZgcs7vXrkGEXH-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="MENUS&lt;div&gt;&lt;br&gt;&lt;div&gt;PK menu_id : INT&lt;/div&gt;&lt;div&gt;FK vendor_id : INT&lt;/div&gt;&lt;div&gt;name : VARCHAR(100)&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="210" x="280" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="D49WajGZgcs7vXrkGEXH-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="FOOD_ITEMS&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;PK food_item_id : INT&lt;/div&gt;&lt;div&gt;FK menu_id : INT&lt;/div&gt;&lt;div&gt;FK category_id : INT&lt;/div&gt;&lt;div&gt;name : VARCHAR(100)&lt;/div&gt;&lt;div&gt;description : VARCHAR(255)&lt;/div&gt;&lt;div&gt;price : DECIMAL(10,2)&lt;/div&gt;&lt;div&gt;available : BOOLEAN&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="210" x="510" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="D49WajGZgcs7vXrkGEXH-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=middle;labelPosition=center;verticalLabelPosition=middle;align=center;" value="&lt;br&gt;&lt;h2&gt;&lt;b&gt;&lt;font style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 19px; line-height: 170%;&quot;&gt;User &amp;amp; Admin Service&lt;/font&gt;&lt;/font&gt;&lt;/b&gt;&lt;/h2&gt;" vertex="1">
+          <mxGeometry height="50" width="392.5" x="210" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="D49WajGZgcs7vXrkGEXH-28" edge="1" parent="1" source="D49WajGZgcs7vXrkGEXH-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" target="D49WajGZgcs7vXrkGEXH-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D49WajGZgcs7vXrkGEXH-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="CARTS&lt;div&gt;&amp;nbsp;&lt;div&gt;PK cart_id : INT&lt;/div&gt;&lt;div&gt;User_id : INT&lt;/div&gt;&lt;div&gt;Status : VARCHAR(20)&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="220" x="100" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="D49WajGZgcs7vXrkGEXH-29" edge="1" parent="1" source="D49WajGZgcs7vXrkGEXH-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="D49WajGZgcs7vXrkGEXH-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D49WajGZgcs7vXrkGEXH-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="ORDERS&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;PK order_id : INT&lt;/div&gt;&lt;div&gt;user_id : INT&lt;/div&gt;&lt;div&gt;vendor_id : INT&lt;/div&gt;&lt;div&gt;total_amount : DECIMAL(10,2)&lt;/div&gt;&lt;div&gt;status : VARCHAR(30)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="200" x="550" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="D49WajGZgcs7vXrkGEXH-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="CART_ITEMS&amp;nbsp;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;PK cart_item_id : INT&lt;/div&gt;&lt;div&gt;FK cart_id : INT&lt;/div&gt;&lt;div&gt;food_item_id : INT&lt;/div&gt;&lt;div&gt;quantity : INT&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="190" x="340" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="D49WajGZgcs7vXrkGEXH-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="ORDER_ITEMS&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;PK order_item_id : INT&lt;/div&gt;&lt;div&gt;FK order_id : INT&lt;/div&gt;&lt;div&gt;food_item_id : INT&lt;/div&gt;&lt;div&gt;quantity : INT&lt;/div&gt;&lt;div&gt;unit_price : DECIMAL(10,2)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="220" x="320" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="D49WajGZgcs7vXrkGEXH-11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="PAYMENTS&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;PK payment_id : INT&lt;/div&gt;&lt;div&gt;order_id : INT&lt;/div&gt;&lt;div&gt;amount : DECIMAL(10,2)&lt;/div&gt;&lt;div&gt;status : VARCHAR(30)&lt;/div&gt;&lt;div&gt;payment_method : VARCHAR(30)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="210" x="310" y="1020" as="geometry" />
+        </mxCell>
+        <mxCell id="D49WajGZgcs7vXrkGEXH-12" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 26px;&quot;&gt;Order Service&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="365" x="243" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="D49WajGZgcs7vXrkGEXH-13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 26px;&quot;&gt;Payment Service&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="340" x="255" y="930" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

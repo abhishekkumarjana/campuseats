@@ -1,9 +1,53 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Page-1" id="cyS-ZLQHegUfJo3o68Pa">
-    <mxGraphModel dx="1030" dy="608" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1880" dy="608" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="9EGk_ppTvnwT0Y_XjsGz-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;div&gt;PAYMENT SERVICE&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Responsible: Tushar Bharadwaj&lt;/div&gt;&lt;div&gt;Owns:&lt;/div&gt;&lt;div&gt;• Payments&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="220" x="-10" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="9EGk_ppTvnwT0Y_XjsGz-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;div&gt;USER &amp;amp; ADMIN SERVICE&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Responsible: Bikash Pradhan&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Owns:&lt;/div&gt;&lt;div&gt;• Users&lt;/div&gt;&lt;div&gt;• Vendors&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="220" x="260" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="9EGk_ppTvnwT0Y_XjsGz-7" edge="1" parent="1" source="9EGk_ppTvnwT0Y_XjsGz-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="9EGk_ppTvnwT0Y_XjsGz-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9EGk_ppTvnwT0Y_XjsGz-8" connectable="0" parent="9EGk_ppTvnwT0Y_XjsGz-7" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Check Item" vertex="1">
+          <mxGeometry relative="1" x="-0.397" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9EGk_ppTvnwT0Y_XjsGz-9" edge="1" parent="1" source="9EGk_ppTvnwT0Y_XjsGz-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="9EGk_ppTvnwT0Y_XjsGz-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9EGk_ppTvnwT0Y_XjsGz-10" connectable="0" parent="9EGk_ppTvnwT0Y_XjsGz-9" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Get Menu" vertex="1">
+          <mxGeometry relative="1" x="0.0567" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9EGk_ppTvnwT0Y_XjsGz-11" edge="1" parent="1" source="9EGk_ppTvnwT0Y_XjsGz-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="9EGk_ppTvnwT0Y_XjsGz-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9EGk_ppTvnwT0Y_XjsGz-12" connectable="0" parent="9EGk_ppTvnwT0Y_XjsGz-11" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="process payment" vertex="1">
+          <mxGeometry relative="1" x="0.0841" y="-2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9EGk_ppTvnwT0Y_XjsGz-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;div&gt;ORDER SERVICE&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Responsible: Abhishek Kumar Jana&lt;/div&gt;&lt;div&gt;Owns:&lt;/div&gt;&lt;div&gt;• Carts&lt;/div&gt;&lt;div&gt;• Cart Items&lt;/div&gt;&lt;div&gt;• Orders&lt;/div&gt;&lt;div&gt;• Order Items&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="220" x="60" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="9EGk_ppTvnwT0Y_XjsGz-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;div&gt;CATALOGUE SERVICE&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Responsible: Ashish Kumar Singh&lt;/div&gt;&lt;div&gt;Owns:&lt;/div&gt;&lt;div&gt;• Menus&lt;/div&gt;&lt;div&gt;• Categories&lt;/div&gt;&lt;div&gt;• Food Items&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="220" x="390" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="9EGk_ppTvnwT0Y_XjsGz-13" edge="1" parent="1" source="9EGk_ppTvnwT0Y_XjsGz-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.467;entryY=0.028;entryDx=0;entryDy=0;entryPerimeter=0;" target="9EGk_ppTvnwT0Y_XjsGz-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9EGk_ppTvnwT0Y_XjsGz-14" connectable="0" parent="9EGk_ppTvnwT0Y_XjsGz-13" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Get Vendor" vertex="1">
+          <mxGeometry relative="1" x="0.134" y="-2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
