@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:pay="http://campuseats.example.com/payment">
+
+    <soap:Header>
+    </soap:Header>
+
+    <soap:Body>
+        <pay:chargeResponse>
+            <pay:transactionId>TXN-90001</pay:transactionId>
+            <pay:status>APPROVED</pay:status>
+            <pay:message>Payment successful</pay:message>
+        </pay:chargeResponse>
+    </soap:Body>
+
+</soap:Envelope>
