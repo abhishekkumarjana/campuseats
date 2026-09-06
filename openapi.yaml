@@ -1,0 +1,257 @@
+openapi: 3.0.3
+
+info:
+  title: CampusEats Orders Service
+  description: REST API for managing CampusEats orders
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:5000
+
+paths:
+
+  /orders:
+    post:
+      summary: Create a new order
+      operationId: createOrder
+      parameters:
+        - name: Idempotency-Key
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrderRequest'
+      responses:
+        '201':
+          description: Order created successfully
+          headers:
+            Location:
+              description: URL of the newly created order
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        '400':
+          description: Malformed request body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '409':
+          description: Order conflicts with current state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '422':
+          description: Domain validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '503':
+          description: Payment service unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+
+    get:
+      summary: List orders
+      operationId: listOrders
+      parameters:
+        - name: studentId
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: status
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - CREATED
+              - PAID
+              - CANCELLED
+      responses:
+        '200':
+          description: List of orders
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderListResponse'
+        '400':
+          description: Invalid query parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+
+  /orders/{orderId}:
+    get:
+      summary: Get a single order
+      operationId: getOrder
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Order found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        '404':
+          description: Order not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+
+  /orders/{orderId}/cancellation:
+    post:
+      summary: Cancel an order
+      operationId: cancelOrder
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CancelOrderRequest'
+      responses:
+        '202':
+          description: Cancellation accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        '400':
+          description: Malformed request body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '404':
+          description: Order not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '409':
+          description: Order cannot be cancelled in its current state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '422':
+          description: Cancellation rejected by domain rules
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+
+components:
+
+  schemas:
+
+    CreateOrderRequest:
+      type: object
+      required:
+        - studentId
+        - items
+        - deliveryAddressId
+        - paymentMethodId
+      properties:
+        studentId:
+          type: string
+        items:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/OrderItem'
+        deliveryAddressId:
+          type: string
+        paymentMethodId:
+          type: string
+
+    OrderItem:
+      type: object
+      required:
+        - itemId
+        - quantity
+      properties:
+        itemId:
+          type: string
+        quantity:
+          type: integer
+          minimum: 1
+
+    CancelOrderRequest:
+      type: object
+      required:
+        - reason
+      properties:
+        reason:
+          type: string
+          minLength: 1
+
+    OrderResponse:
+      type: object
+      properties:
+        orderId:
+          type: integer
+        studentId:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItem'
+        deliveryAddressId:
+          type: string
+        status:
+          type: string
+        total:
+          type: number
+          format: float
+
+    OrderListResponse:
+      type: object
+      properties:
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderResponse'
+
+    Problem:
+      type: object
+      required:
+        - type
+        - title
+        - status
+        - detail
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
