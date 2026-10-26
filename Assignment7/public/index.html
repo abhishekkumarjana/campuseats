@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusEats - Menu Service</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f6fa;
+      color: #243247;
+    }
+
+    header {
+      background: #173f70;
+      color: white;
+      padding: 25px 15px;
+      text-align: center;
+    }
+
+    main {
+      max-width: 850px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 12px;
+      margin-bottom: 22px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #e3e8ef;
+      text-align: left;
+    }
+
+    th {
+      background: #edf3fa;
+    }
+
+    input, button {
+      padding: 11px;
+      margin: 6px 4px 6px 0;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+
+    input {
+      border: 1px solid #cbd5e1;
+    }
+
+    button {
+      background: #1769aa;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #104d80;
+    }
+
+    #message {
+      margin-top: 12px;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #64748b;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>CampusEats</h1>
+    <p>GraphQL Menu Service</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Available Dishes</h2>
+      <button onclick="loadDishes()">Refresh Menu</button>
+
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Dish Name</th>
+            <th>Price (₹)</th>
+            <th>Available</th>
+          </tr>
+        </thead>
+        <tbody id="dishList"></tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>Add a New Dish</h2>
+
+      <form id="dishForm">
+        <input
+          id="name"
+          type="text"
+          placeholder="Dish name"
+          required
+        >
+
+        <input
+          id="price"
+          type="number"
+          placeholder="Price"
+          min="0.01"
+          step="0.01"
+          required
+        >
+
+        <button type="submit">Add Dish</button>
+      </form>
+
+      <p id="message" role="status"></p>
+    </section>
+  </main>
+
+  <footer>
+    CS543 Web Services | Assignment 7 | GraphQL
+  </footer>
+
+  <script>
+    const endpoint = '/graphql';
+
+    async function graphqlRequest(query, variables = {}) {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ query, variables })
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || result.errors) {
+        throw new Error(
+          result.errors?.map(error => error.message).join(', ')
+          || 'Request failed'
+        );
+      }
+
+      return result.data;
+    }
+
+    async function loadDishes() {
+      const list = document.getElementById('dishList');
+
+      try {
+        const data = await graphqlRequest(`
+          query {
+            dishes {
+              id
+              name
+              price
+              available
+            }
+          }
+        `);
+
+        list.replaceChildren();
+
+        data.dishes.forEach(dish => {
+          const row = document.createElement('tr');
+
+          [
+            dish.id,
+            dish.name,
+            Number(dish.price).toFixed(2),
+            dish.available ? 'Yes' : 'No'
+          ].forEach(value => {
+            const cell = document.createElement('td');
+            cell.textContent = value;
+            row.appendChild(cell);
+          });
+
+          list.appendChild(row);
+        });
+      } catch (error) {
+        document.getElementById('message').textContent =
+          'Could not load dishes: ' + error.message;
+      }
+    }
+
+    document.getElementById('dishForm').addEventListener(
+      'submit',
+      async event => {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value.trim();
+        const price = Number(document.getElementById('price').value);
+        const message = document.getElementById('message');
+
+        if (!name || !Number.isFinite(price) || price <= 0) {
+          message.textContent = 'Enter a valid name and positive price.';
+          return;
+        }
+
+        try {
+          const data = await graphqlRequest(`
+            mutation AddDish($input: AddDishInput!) {
+              addDish(input: $input) {
+                id
+                name
+                price
+                available
+              }
+            }
+          `, {
+            input: {
+              name,
+              price,
+              available: true
+            }
+          });
+
+          message.textContent =
+            'Added successfully: ' + data.addDish.name;
+
+          event.target.reset();
+          await loadDishes();
+        } catch (error) {
+          message.textContent = 'Error: ' + error.message;
+        }
+      }
+    );
+
+    loadDishes();
+  </script>
+</body>
+</html>
