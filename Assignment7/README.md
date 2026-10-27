@@ -90,7 +90,11 @@ It executes an SQL INSERT statement to save the new dish in MySQL.
 
 ## Team Members
 
-Add all team members' full names and roll numbers here.
+[ASHISH KUMAR SINGH] [20252651014]
+[ABHISHEK KUMAR JANA][20252651002]
+[BIKASH PRADHAN][20252651015]
+[TUSHAR BHARDWAJ][20252651058]
+.
 
 ## Demonstration
 
